@@ -135,24 +135,24 @@ workflows:
           requires:
             - "run-lint"
       - create-small-cluster:
-          cluster-name: raghucapstoneprj-cluster-deployment-44869da
+          cluster-name: raghucapstoneprj-cluster-deployment
           requires:
             - "push-docker-image"
       - deploy-application:
-          cluster-name: raghucapstoneprj-cluster-deployment-44869da
+          cluster-name: raghucapstoneprj-cluster-deployment
           aws-region: $AWS_DEFAULT_REGION
           requires:
             - create-small-cluster
 #            - push-docker-image
       - aws-eks/update-container-image:
-          cluster-name: raghucapstoneprj-cluster-deployment-44869da
+          cluster-name: raghucapstoneprj-cluster-deployment
           container-image-updates: 'raghucapstoneprj=raghucapstoneprj:latest'
           record: true
           requires:
             - deploy-application
           resource-name: deployment/raghucapstoneprj      
       - test-application:
-          cluster-name: raghucapstoneprj-cluster-deployment-44869da
+          cluster-name: raghucapstoneprj-cluster-deployment
           aws-region: $AWS_DEFAULT_REGION
           requires:
             - aws-eks/update-container-image
