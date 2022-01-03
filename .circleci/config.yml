@@ -144,6 +144,13 @@ workflows:
           requires:
 #            - create-small-cluster
             - push-docker-image
+      - aws-eks/update-container-image:
+          cluster-name: raghucapstoneprj-cluster-deployment-44869da
+          container-image-updates: 'raghucapstoneprj=raghucapstoneprj:latest'
+          record: true
+          requires:
+            - deploy-application
+          resource-name: deployment/raghucapstoneprj      
       - test-application:
           cluster-name: raghucapstoneprj-cluster-deployment-44869da
           aws-region: $AWS_DEFAULT_REGION
