@@ -158,20 +158,20 @@ workflows:
       - push-docker-image:
           requires:
             - "run-lint"
-#      - create-small-cluster:
-#          cluster-name: raghucapstoneprj-cluster-deployment-${CIRCLE_WORKFLOW_ID:0:7}
-#          requires:
-#            - "push-docker-image"
-#      - deploy-application:
-#          cluster-name: raghucapstoneprj-cluster-deployment-${CIRCLE_WORKFLOW_ID:0:7}
-#          aws-region: $AWS_DEFAULT_REGION
-#          requires:
-#            - create-small-cluster
-#      - test-application:
-#          cluster-name: raghucapstoneprj-cluster-deployment-${CIRCLE_WORKFLOW_ID:0:7}
-#          aws-region: $AWS_DEFAULT_REGION
-#          requires:
-#            - deploy-application
+      - create-small-cluster:
+          cluster-name: raghucapstoneprj-cluster-deployment-${CIRCLE_WORKFLOW_ID:0:7}
+          requires:
+            - "push-docker-image"
+      - deploy-application:
+          cluster-name: raghucapstoneprj-cluster-deployment-${CIRCLE_WORKFLOW_ID:0:7}
+          aws-region: $AWS_DEFAULT_REGION
+          requires:
+            - create-small-cluster
+      - test-application:
+          cluster-name: raghucapstoneprj-cluster-deployment-${CIRCLE_WORKFLOW_ID:0:7}
+          aws-region: $AWS_DEFAULT_REGION
+          requires:
+            - deploy-application
 #      - undeploy-application:
 #          cluster-name: raghucapstoneprj-cluster-deployment-${CIRCLE_WORKFLOW_ID:0:7}
 #          aws-region: $AWS_DEFAULT_REGION
