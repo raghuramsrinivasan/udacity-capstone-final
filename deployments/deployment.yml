@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: raghucapstoneprj
+  labels:
+    app: raghucapstoneprj
+spec:
+  selector:
+    matchLabels:
+      app: raghucapstoneprj
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: raghucapstoneprj
+    spec:
+      containers:
+      - name: raghucapstoneprj
+        image: sraghuraman27/raghucapstoneprj
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
