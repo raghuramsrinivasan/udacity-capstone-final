@@ -155,5 +155,5 @@ workflows:
           cluster-name: raghucapstoneprj-cluster-deployment-44869da
           aws-region: $AWS_DEFAULT_REGION
           requires:
-            - deploy-application
+            - aws-eks/update-container-image
 
